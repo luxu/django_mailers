@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h2>Funcionários</h2>
 {% if perms.person.add_employee %}
     <a href="{% url 'person:employee_create' %}" role="button">Novo funcionário</a>
@@ -34,4 +35,4 @@
         {% endfor %}
     </tbody>
 </table>
-{% endblock content %
+{% endblock content %}

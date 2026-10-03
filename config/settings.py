@@ -1,14 +1,12 @@
 from pathlib import Path
-
 from decouple import config, Csv
-from django.conf.global_settings import LOGIN_URL
+from dj_database_url import parse as db_url
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
-
 DEBUG = config('DEBUG', default=False, cast=bool)
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='', cast=Csv())
 
 INSTALLED_APPS = [
@@ -53,15 +51,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('POSTGRES_NAME'),
+#         'USER': config('POSTGRES_USER'),
+#         'PASSWORD': config('POSTGRES_PASSWORD'),
+#         'HOST': config('POSTGRES_HOST', default='db'),
+#         'PORT': 5432,
+#     }
+# }
+
+default_db_url = "sqlite:///" + str(BASE_DIR / "db.sqlite3")
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_NAME'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST', default='db'),
-        'PORT': 5432,
-    }
+    "default": db_url(
+        config('DATABASE_URL', default=default_db_url),
+        conn_max_age=600,
+        conn_health_checks=True
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
