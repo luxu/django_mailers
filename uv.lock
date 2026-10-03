@@ -61,8 +61,11 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "django" },
+<<<<<<< Updated upstream
     { name = "django-extensions" },
     { name = "ipython" },
+=======
+>>>>>>> Stashed changes
     { name = "psycopg", extra = ["binary"] },
     { name = "python-decouple" },
 ]
@@ -70,13 +73,17 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "django", specifier = ">=6.1.1" },
+<<<<<<< Updated upstream
     { name = "django-extensions", specifier = ">=4.1" },
     { name = "ipython", specifier = ">=9.17.1" },
+=======
+>>>>>>> Stashed changes
     { name = "psycopg", extras = ["binary"], specifier = ">=3.2.0" },
     { name = "python-decouple", specifier = ">=3.8" },
 ]
 
 [[package]]
+<<<<<<< Updated upstream
 name = "executing"
 version = "2.2.1"
 source = { registry = "https://pypi.org/simple" }
@@ -204,6 +211,8 @@ wheels = [
 ]
 
 [[package]]
+=======
+>>>>>>> Stashed changes
 name = "psycopg"
 version = "3.3.6"
 source = { registry = "https://pypi.org/simple" }
