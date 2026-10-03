@@ -12,13 +12,13 @@ services:
 
   web:
     build: .
-    command: uv run python manage.py runserver 0.0.0.0:8001
+    command: uv run python manage.py runserver 0.0.0.0:8004
     env_file: .env
     volumes:
       - .:/app
       - venv:/opt/venv
     ports:
-      - "8001:8001"
+      - "8004:8004"
     depends_on:
       - db
       - mailpit
